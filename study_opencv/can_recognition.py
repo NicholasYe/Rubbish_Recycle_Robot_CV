@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
  
-faceCascade = cv2.CascadeClassifier('/home/pi/Opencv/haarcascade_frontalface_default.xml')
+faceCascade = cv2.CascadeClassifier('/home/pi/Rubbish_Recycle_Robot_CV/Xml/8.16_Generation_One/cascade.xml')
  
 cap = cv2.VideoCapture(0)
 cap.set(3,640) # set Width
@@ -9,13 +9,12 @@ cap.set(4,480) # set Height
  
 while True:
     ret, img = cap.read()
-
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
     faces = faceCascade.detectMultiScale(
         gray,     
         scaleFactor=1.2,
         minNeighbors=5,     
-        minSize=(20, 20)
     )
  
     for (x,y,w,h) in faces:
