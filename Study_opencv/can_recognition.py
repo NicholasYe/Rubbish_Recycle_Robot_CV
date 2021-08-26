@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
  
-faceCascade = cv2.CascadeClassifier('/home/pi/Rubbish_Recycle_Robot_CV/Xml/8.18_Generation_Three/cascade.xml')
+faceCascade = cv2.CascadeClassifier('/home/pi/Rubbish_Recycle_Robot_CV/Xml/8.18_Generation_Two/cascade.xml')
  
 cap = cv2.VideoCapture(0)
 cap.set(3,640) # set Width
