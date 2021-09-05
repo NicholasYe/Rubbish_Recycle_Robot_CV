@@ -14,7 +14,8 @@ while True:
     faces = faceCascade.detectMultiScale(
         gray,     
         scaleFactor=1.2,
-        minNeighbors=5,     
+        minNeighbors=5, 
+        minSize=(20,20)
     )
  
     for (x,y,w,h) in faces:

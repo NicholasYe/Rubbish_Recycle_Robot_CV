@@ -1,6 +1,10 @@
 import numpy as np
 import cv2
 
+def detectHSColor():
+    print("a")
+
+
 # name path
 Class_path = '/home/pi/Rubbish_Recycle_Robot_CV/Xml/8.29_Generation_Three/cascade8.29.xml'
 
