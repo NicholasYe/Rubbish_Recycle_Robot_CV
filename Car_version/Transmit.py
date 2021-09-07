@@ -56,7 +56,9 @@ while True:
     # res_blue=cv2.bitwise_and(frame,frame,mask=mask_blue)
     # res_blue=cv2.cvtColor(res_blue,cv2.COLOR_HSV2BGR)
 
-    output_img = np.zeros(img.shape, dtype='uint8')
+    # output_img = np.zeros(img.shape, dtype='uint8')
+    final_img = np.zeros(img.shape, dtype='uint8')
+    process_img = np.zeros(img.shape, dtype='uint8')
 
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     # print("hsv", hsv.shape)
@@ -69,24 +71,28 @@ while True:
     # print("mask1", mask1.shape)
 
     # hueMask = cv2.add(mask1, mask2)
-    hueMask = mask1 + mask2
+    hueMask = mask1 & mask2
     # print("hueMask", hueMask.shape)
-    output_img[:,:,0]=hueMask
+    # output_img[:,:,0] = hueMask
 
     satMask = cv2.inRange(channels[1], 43, 255)
     # print("satMask", satMask.shape)
-    output_img[:,:,1]=satMask
+    # output_img[:,:,1] = satMask
+    # print("output_img", output_img.shape)
 
     # mask = cv2.add(hueMask, satMask)
     # mask = hueMask + satMask
     # print("mask", mask.shape)
-
+    process_img[:,:,0] = (hueMask & satMask)
+    # img.copyTo(final_img, process_img)
+    
 
     # out_img = gray2rgb(mask)
     # print("out_img", out_img.shape)
 
     # image_process = img.copyTo(image_green)
-    image_gray = cv2.cvtColor(output_img, cv2.COLOR_BGR2GRAY)
+    image_gray = cv2.cvtColor(final_img, cv2.COLOR_BGR2GRAY)
+    # print("image_gray", image_gray.shape)
 
     # special features
     bottle = Bottle.detectMultiScale(
@@ -99,10 +105,12 @@ while True:
 
     # identify the object with frame
     for (x, y, w, h) in bottle:
-        cv2.rectangle(output_img, (x, y), (x+w, y+h), (255, 0, 0), 2)
+        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
 
     # display the camera window with title
-    cv2.imshow('I am so tired!!', output_img)
+    cv2.imshow('I am so tired!!', hueMask)
+    cv2.imshow("test", image_gray)
+
 
     # close the window
     k = cv2.waitKey(30) & 0xff
