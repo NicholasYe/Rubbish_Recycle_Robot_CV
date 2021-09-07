@@ -26,11 +26,11 @@ while True:
     process_img = np.zeros(img.shape, dtype='uint8')
 
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-    lower=np.array([35,43,46])
-    upper=np.array([77,255,255])
+    lower = np.array([35, 43, 46])
+    upper = np.array([77, 255, 255])
  
-    mask=cv2.inRange(hsv,lower,upper)
-    res=cv2.bitwise_and(img,img,mask=mask)
+    mask = cv2.inRange(hsv, lower,upper)
+    res = cv2.bitwise_and(img, img, mask=mask)
     # cv2.imshow('mask',mask)
     # cv2.imshow('res',res)
     
