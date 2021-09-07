@@ -31,8 +31,8 @@ while True:
  
     mask = cv2.inRange(hsv, lower,upper)
     res = cv2.bitwise_and(img, img, mask=mask)
-    # cv2.imshow('mask',mask)
-    # cv2.imshow('res',res)
+    # cv2.imshow('mask', mask)
+    # cv2.imshow('res', res)
     
     image_gray = cv2.cvtColor(res, cv2.COLOR_BGR2GRAY)
     bottle = Bottle.detectMultiScale(
