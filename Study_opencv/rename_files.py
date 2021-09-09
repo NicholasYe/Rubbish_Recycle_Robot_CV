@@ -1,5 +1,5 @@
 import os
-path = "/home/pi/BackUp/Database/positive/" 
+path = "/home/pi/Opencv/Green_Bottle_new/" 
 os.listdir(path)
 filename_list = os.listdir(path)
 a = 0

@@ -3,7 +3,7 @@ import cv2
 from skimage.color import gray2rgb
 
 # name path
-Class_path = '/home/pi/Rubbish_Recycle_Robot_CV/Xml/8.29_Generation_Three/cascade8.29.xml'
+Class_path = '/home/pi/Rubbish_Recycle_Robot_CV/Xml/9.9_Generation_Four/cascade9.9.xml'
 
 # name classifier
 Bottle = cv2.CascadeClassifier(Class_path)
